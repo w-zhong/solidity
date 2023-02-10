@@ -1,7 +1,12 @@
+const { ethers } = require("hardhat");
+
 async function main() {
-  console.log("hi");
-  let variable = 10;
-  console.log(variable);
+  const SimpleStorage = await ethers.getContractFactory("SimpleStorage");
+  console.log("Deploying SimpleStorage...");
+
+  const simpleStorage = await SimpleStorage.deploy();
+  await simpleStorage.deployed();
+  console.log("SimpleStorage deployed to:", simpleStorage.address);
 }
 
 main()
